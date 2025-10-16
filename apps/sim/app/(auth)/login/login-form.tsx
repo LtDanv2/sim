@@ -534,29 +534,6 @@ export default function LoginPage({
         </div>
       )}
 
-      <div
-        className={`${inter.className} auth-text-muted absolute right-0 bottom-0 left-0 px-8 pb-8 text-center font-[340] text-[13px] leading-relaxed sm:px-8 md:px-[44px]`}
-      >
-        By signing in, you agree to our{' '}
-        <Link
-          href='/terms'
-          target='_blank'
-          rel='noopener noreferrer'
-          className='auth-link underline-offset-4 transition hover:underline'
-        >
-          Terms of Service
-        </Link>{' '}
-        and{' '}
-        <Link
-          href='/privacy'
-          target='_blank'
-          rel='noopener noreferrer'
-          className='auth-link underline-offset-4 transition hover:underline'
-        >
-          Privacy Policy
-        </Link>
-      </div>
-
       <Dialog open={forgotPasswordOpen} onOpenChange={setForgotPasswordOpen}>
         <DialogContent className='auth-card auth-card-shadow max-w-[540px] rounded-[10px] border backdrop-blur-sm'>
           <DialogHeader>

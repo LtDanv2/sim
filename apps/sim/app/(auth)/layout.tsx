@@ -1,7 +1,9 @@
 'use client'
 
 import { useEffect } from 'react'
+import Link from 'next/link'
 import Nav from '@/app/(landing)/components/nav/nav'
+import { inter } from '@/app/fonts/inter'
 import AuthBackground from './components/auth-background'
 
 // Helper to detect if a color is dark
@@ -34,7 +36,35 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
         {/* Content */}
         <div className='relative z-30 flex flex-1 items-center justify-center px-4 pb-24'>
-          <div className='w-full max-w-lg px-4'>{children}</div>
+          <div className='w-full max-w-lg'>
+            <div className='relative rounded-[24px] bg-white px-8 py-12 shadow-xl sm:px-12'>
+              {children}
+            </div>
+          </div>
+        </div>
+
+        {/* Terms and Privacy - Fixed at bottom */}
+        <div
+          className={`${inter.className} absolute right-0 bottom-0 left-0 z-40 px-8 pb-8 text-center font-[340] text-[13px] text-white leading-relaxed sm:px-8 md:px-[44px]`}
+        >
+          By signing in, you agree to our{' '}
+          <Link
+            href='/terms'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='text-white underline-offset-4 transition hover:underline hover:opacity-80'
+          >
+            Terms of Service
+          </Link>{' '}
+          and{' '}
+          <Link
+            href='/privacy'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='text-white underline-offset-4 transition hover:underline hover:opacity-80'
+          >
+            Privacy Policy
+          </Link>
         </div>
       </main>
     </AuthBackground>
