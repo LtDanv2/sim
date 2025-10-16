@@ -113,33 +113,35 @@ export default function Nav({ hideAuthButtons = false, variant = 'landing' }: Na
       itemType='https://schema.org/SiteNavigationElement'
     >
       <div className='flex items-center gap-[34px]'>
-        <Link href='/' aria-label={`${brand.name} home`} itemProp='url'>
-          <span itemProp='name' className='sr-only'>
-            {brand.name} Home
-          </span>
-          {brand.logoUrl ? (
-            <Image
-              src={brand.logoUrl}
-              alt={`${brand.name} Logo`}
-              width={49.78314}
-              height={24.276}
-              className='h-[24.276px] w-auto object-contain'
-              priority
-              loading='eager'
-              quality={100}
-            />
-          ) : (
-            <Image
-              src='/logo/b&w/text/b&w.svg'
-              alt='Sim - Workflows for LLMs'
-              width={49.78314}
-              height={24.276}
-              priority
-              loading='eager'
-              quality={100}
-            />
-          )}
-        </Link>
+        {variant !== 'auth' && (
+          <Link href='/' aria-label={`${brand.name} home`} itemProp='url'>
+            <span itemProp='name' className='sr-only'>
+              {brand.name} Home
+            </span>
+            {brand.logoUrl ? (
+              <Image
+                src={brand.logoUrl}
+                alt={`${brand.name} Logo`}
+                width={49.78314}
+                height={24.276}
+                className='h-[24.276px] w-auto object-contain'
+                priority
+                loading='eager'
+                quality={100}
+              />
+            ) : (
+              <Image
+                src='/logo/b&w/text/b&w.svg'
+                alt='Sim - Workflows for LLMs'
+                width={49.78314}
+                height={24.276}
+                priority
+                loading='eager'
+                quality={100}
+              />
+            )}
+          </Link>
+        )}
         {/* Desktop Navigation Links - only show on landing and if hosted */}
         {variant === 'landing' && isHosted && (
           <ul className='hidden items-center justify-center gap-[20px] pt-[4px] md:flex'>
