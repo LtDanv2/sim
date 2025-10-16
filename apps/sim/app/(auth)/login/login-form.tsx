@@ -21,8 +21,7 @@ import { createLogger } from '@/lib/logs/console/logger'
 import { cn } from '@/lib/utils'
 import { SocialLoginButtons } from '@/app/(auth)/components/social-login-buttons'
 import { SSOLoginButton } from '@/app/(auth)/components/sso-login-button'
-import { inter } from '@/app/fonts/inter'
-import { soehne } from '@/app/fonts/soehne/soehne'
+import { poppins } from '@/app/fonts/poppins'
 
 const logger = createLogger('LoginForm')
 
@@ -378,17 +377,17 @@ export default function LoginPage({
   return (
     <>
       <div className='space-y-1 text-center'>
-        <h1 className={`${soehne.className} font-medium text-[32px] text-black tracking-tight`}>
-          Sign in
+        <h1 className={`${poppins.className} font-medium text-[32px] text-black tracking-tight`}> 
+          Login now
         </h1>
-        <p className={`${inter.className} font-[380] text-[16px] text-muted-foreground`}>
+        <p className={`${poppins.className} font-[380] text-[16px] text-muted-foreground`}>
           Enter your details
         </p>
       </div>
 
       {/* SSO Login Button (primary top-only when it is the only method) */}
       {showTopSSO && (
-        <div className={`${inter.className} mt-8`}>
+        <div className={`${poppins.className} mt-8`}>
           <SSOLoginButton
             callbackURL={callbackUrl}
             variant='primary'
@@ -399,7 +398,7 @@ export default function LoginPage({
 
       {/* Email/Password Form - show unless explicitly disabled */}
       {!isFalsy(env.NEXT_PUBLIC_EMAIL_PASSWORD_SIGNUP_ENABLED) && (
-        <form onSubmit={onSubmit} className={`${inter.className} mt-8 space-y-8`}>
+        <form onSubmit={onSubmit} className={`${poppins.className} mt-8 space-y-8`}>
           <div className='space-y-6'>
             <div className='space-y-2'>
               <div className='flex items-center justify-between'>
@@ -436,7 +435,7 @@ export default function LoginPage({
                 <button
                   type='button'
                   onClick={() => setForgotPasswordOpen(true)}
-                  className='font-medium text-muted-foreground text-xs transition hover:text-foreground'
+                  className='font-medium text-[#9497cc] text-xs transition hover:opacity-80'
                 >
                   Forgot password?
                 </button>
@@ -484,14 +483,14 @@ export default function LoginPage({
             className={`${buttonClass} flex w-full items-center justify-center gap-2 rounded-[10px] border font-medium text-[15px] text-white transition-all duration-200`}
             disabled={isLoading}
           >
-            {isLoading ? 'Signing in...' : 'Sign in'}
+            {isLoading ? 'Logging in...' : 'Login now'}
           </Button>
         </form>
       )}
 
       {/* Divider - show when we have multiple auth methods */}
       {showDivider && (
-        <div className={`${inter.className} relative my-6 font-light`}>
+        <div className={`${poppins.className} relative my-6 font-light`}>
           <div className='absolute inset-0 flex items-center'>
             <div className='auth-divider w-full border-t' />
           </div>
@@ -502,7 +501,7 @@ export default function LoginPage({
       )}
 
       {showBottomSection && (
-        <div className={cn(inter.className, !emailEnabled ? 'mt-8' : undefined)}>
+        <div className={cn(poppins.className, !emailEnabled ? 'mt-8' : undefined)}>
           <SocialLoginButtons
             googleAvailable={googleAvailable}
             githubAvailable={githubAvailable}
@@ -522,11 +521,11 @@ export default function LoginPage({
 
       {/* Only show signup link if email/password signup is enabled */}
       {!isFalsy(env.NEXT_PUBLIC_EMAIL_PASSWORD_SIGNUP_ENABLED) && (
-        <div className={`${inter.className} pt-6 text-center font-light text-[14px]`}>
+        <div className={`${poppins.className} pt-6 text-center font-light text-[14px]`}>
           <span className='font-normal'>Don't have an account? </span>
           <Link
             href={isInviteFlow ? `/signup?invite_flow=true&callbackUrl=${callbackUrl}` : '/signup'}
-            className='font-medium text-[var(--brand-accent-hex)] underline-offset-4 transition hover:text-[var(--brand-accent-hover-hex)] hover:underline'
+            className='font-medium text-[#9497cc] underline-offset-4 transition hover:opacity-80 hover:underline'
           >
             Sign up
           </Link>
